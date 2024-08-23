@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 17:28:10 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 14:16:12 by rohta            ###   ########.fr       */
+/*   Created: 2024/08/23 13:42:57 by rohta             #+#    #+#             */
+/*   Updated: 2024/08/23 14:17:25 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*aft_lien(char *text)
 {
@@ -105,14 +105,14 @@ static char	*read_line(int fd, char *text)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*text;
+	static char	*text[4096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	text = read_line(fd, text);
-	if (!text)
+	text[fd] = read_line(fd, text[fd]);
+	if (!text[fd])
 		return (NULL);
-	line = get_line(text);
-	text = aft_line(text);
+	line = get_line(text[fd]);
+	text[fd] = aft_line(text[fd]);
 	return (line);
 }
