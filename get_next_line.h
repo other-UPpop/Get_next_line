@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:37:52 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 14:02:40 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/23 14:33:03 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BFFER_SIZE 1024
+#  define BUFFER_SIZE 1024
 # endif
 
 char	*get_next_line(int fd);

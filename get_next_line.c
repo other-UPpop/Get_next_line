@@ -6,13 +6,13 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:28:10 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 14:16:12 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/23 15:45:03 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*aft_lien(char *text)
+static char	*aft_line(char *text)
 {
 	char	*str;
 	size_t	i;
@@ -38,7 +38,7 @@ static char	*aft_lien(char *text)
 	return (str);
 }
 
-static int	ft_n_check(char *text, size_t i)
+static int	ft_n_check(char *text, char *str, size_t i)
 {
 	if (text[i] == '\n')
 	{
@@ -64,12 +64,13 @@ static char	*get_line(char *text)
 		str = (char *)malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
+	i = 0;
 	while (text[i] != '\0' && text[i] != '\n')
 	{
 		str[i] = text[i];
 		++i;
 	}
-	i = ft_n_check(text, i);
+	i = ft_n_check(text, str, i);
 	str[i] = '\0';
 	return (str);
 }
@@ -80,11 +81,11 @@ static char	*read_line(int fd, char *text)
 	char	*temp_str;
 	ssize_t	i;
 
-	read_str = (char *)malloc(sizeof(char) * (BUFFER_SIZE +1));
+	read_str = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!read_str)
 		return (NULL);
 	i = 1;
-	while (!ft_strchar(text, '\n') && i != 0)
+	while (!ft_strchr(text, '\n') && i != 0)
 	{
 		i = read(fd, read_str, BUFFER_SIZE);
 		if (i < 0)

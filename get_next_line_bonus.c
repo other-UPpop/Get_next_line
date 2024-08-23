@@ -6,13 +6,13 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:42:57 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 14:17:25 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/23 15:51:08 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*aft_lien(char *text)
+static char	*aft_line(char *text)
 {
 	char	*str;
 	size_t	i;
