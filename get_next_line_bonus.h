@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:47:47 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 15:53:11 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/23 16:03:59 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BFFER_SIZE 1024
+#  define BUFFER_SIZE 1024
 # endif
 
 char	*get_next_line(int fd);

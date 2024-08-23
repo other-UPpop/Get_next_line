@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:42:57 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 15:51:08 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/23 16:46:04 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*aft_line(char *text)
 		free (text);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * ((ft_strlen(text) - i) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(text) - i + 1));
 	if (!str)
 		return (NULL);
 	++i;
@@ -38,7 +38,7 @@ static char	*aft_line(char *text)
 	return (str);
 }
 
-static int	ft_n_check(char *text, size_t i)
+static int	ft_n_check(char *text, char *str, size_t i)
 {
 	if (text[i] == '\n')
 	{
@@ -64,12 +64,13 @@ static char	*get_line(char *text)
 		str = (char *)malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
+	i = 0;
 	while (text[i] != '\0' && text[i] != '\n')
 	{
 		str[i] = text[i];
 		++i;
 	}
-	i = ft_n_check(text, i);
+	i = ft_n_check(text, str, i);
 	str[i] = '\0';
 	return (str);
 }
@@ -80,17 +81,22 @@ static char	*read_line(int fd, char *text)
 	char	*temp_str;
 	ssize_t	i;
 
-	read_str = (char *)malloc(sizeof(char) * (BUFFER_SIZE +1));
+	read_str = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!read_str)
 		return (NULL);
 	i = 1;
-	while (!ft_strchar(text, '\n') && i != 0)
+	while (!ft_strchr(text, '\n'))
 	{
 		i = read(fd, read_str, BUFFER_SIZE);
 		if (i < 0)
 		{
 			free (read_str);
 			return (NULL);
+		}
+		if (i == 0)
+		{
+			free (read_str);
+			return (text);
 		}
 		read_str[i] = '\0';
 		temp_str = ft_strjoin(text, read_str);
@@ -105,7 +111,7 @@ static char	*read_line(int fd, char *text)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*text[4096];
+	static char	*text[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:47:04 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 15:51:52 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/23 16:14:58 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *str)
 {
 	size_t	len;
 
+	if (!str)
+		return ((size_t)(NULL));
 	len = 0;
 	while (str[len] != '\0')
 	{
@@ -28,6 +30,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	uc;
 
+	if (!s)
+		return (NULL);
 	uc = (unsigned char)c;
 	while (*s && *s != uc)
 		s++;
