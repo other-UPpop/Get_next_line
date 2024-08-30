@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:47:47 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 16:03:59 by rohta            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:45:04 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(const char *s1, const char *s2);
+char	*read_check(char *read_str, char *text, ssize_t i);
 
 #endif
