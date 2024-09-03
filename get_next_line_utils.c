@@ -6,11 +6,25 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:15:29 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 15:46:58 by rohta            ###   ########.fr       */
+/*   Updated: 2024/09/03 11:25:41 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*read_check(char *read_str, char *text, ssize_t i)
+{
+	if (i < 0)
+	{
+		free (read_str);
+		return (NULL);
+	}
+	else
+	{
+		free (read_str);
+		return (text);
+	}
+}
 
 size_t	ft_strlen(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:28:10 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/23 15:45:03 by rohta            ###   ########.fr       */
+/*   Updated: 2024/09/03 11:20:25 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,11 @@ static char	*read_line(int fd, char *text)
 	if (!read_str)
 		return (NULL);
 	i = 1;
-	while (!ft_strchr(text, '\n') && i != 0)
+	while (!ft_strchr(text, '\n'))
 	{
 		i = read(fd, read_str, BUFFER_SIZE);
-		if (i < 0)
-		{
-			free (read_str);
-			return (NULL);
-		}
+		if (i <= 0)
+			return (read_check(read_str, text, i));
 		read_str[i] = '\0';
 		temp_str = ft_strjoin(text, read_str);
 		if (text)
