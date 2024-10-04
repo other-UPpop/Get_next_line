@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42.jp>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 13:47:04 by rohta             #+#    #+#             */
-/*   Updated: 2024/08/30 13:44:09 by rohta            ###   ########.fr       */
+/*   Updated: 2024/10/04 10:38:28 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 char	*read_check(char *read_str, char *text, ssize_t i)
 {
+	free (read_str);
 	if (i < 0)
-	{
-		free (read_str);
 		return (NULL);
-	}
-	if (i == 0)
-	{
-		free (read_str);
+	else
 		return (text);
-	}
 }
 
 size_t	ft_strlen(const char *str)
